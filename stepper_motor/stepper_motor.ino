@@ -8,6 +8,7 @@ const int trigPin = 7;
 const int echoPin = 8;
 const int servoVerticalPin = 9;
 const int servoHorizontalPin = 10;
+const int ledPin = 11;
 
 int drawerState = 0; // 1 is open
 int rotationAxis = -1; // 
@@ -27,6 +28,7 @@ void setup() {
   pinMode(switchPin, INPUT);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
+  pinMode(ledPin, OUTPUT);
 
   servoMotorV.attach(servoVerticalPin);
   servoMotorH.attach(servoHorizontalPin);
@@ -67,12 +69,19 @@ void loop() {
   // create coinFlip to help manage motions 
   if (millis() - lastMoveTime > 20) {
     if (rotationAxis == -1) {
-    servoMotorH.write(int(random(0, 90))); 
+      servoMotorH.write(int(random(0, 90))); 
+      // digitalWrite(ledPin, HIGH);
     } else if (rotationAxis == 1) {
-    servoMotorV.write(int(random(120, 160)));
+      servoMotorV.write(int(random(120, 160)));
+      // digitalWrite(ledPin, LOW);
     }
     rotationAxis *= -1;
   }
+
+  digitalWrite(ledPin, HIGH);
+  delay(250);
+  digitalWrite(ledPin, LOW);
+  delay(250);
   
 
   // delay(250); // delay makes it hard to time interaction
