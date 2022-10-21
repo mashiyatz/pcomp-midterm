@@ -1,8 +1,8 @@
 #include "Stepper.h"
 #include "Servo.h"
 
-const int stepsPerRevolution = 512; // change depending on stepper
-const int stepperMotorSpeed = 40; 
+const int stepsPerRevolution = 200; // change depending on stepper
+const int stepperMotorSpeed = 100; 
 const int switchPin = 2;
 // initialize the stepper library on pins 3-6:
 Stepper drawerMotor(stepsPerRevolution, 3, 4, 5, 6); 
@@ -13,21 +13,21 @@ const int servoHPin = 10;
 const int ledPin = 11;
 
 bool isDrawerOpen = 0; // 1 means the drawer is open
+bool isLightOn = 0; 
 long sensorDuration;
 long lastMoveTime = 0;
 long lastBlinkTime = 0;
 int distance_cm;
-int skullMotionFrequency;
-int blinkFrequency;
-int motorSteps;
+int skullMotionFrequency = 1;
+int blinkFrequency = 2;
+int animationStep = 0;
 
-int animationStep;
-bool isLightOn; 
 
 Servo servoMotorV;
 Servo servoMotorH;
 
 void setup() {
+  Serial.begin(9600);
   drawerMotor.setSpeed(stepperMotorSpeed);
 
   pinMode(switchPin, INPUT);
@@ -61,15 +61,22 @@ void getDistance() {
   */
   
   // Trigger pin low-high-low to send a pulse 
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
+  int totalTime = 0;
+  for (int i = 0; i < 10; i++) {
+    digitalWrite(trigPin, LOW);
+    delayMicroseconds(2);
+    digitalWrite(trigPin, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(trigPin, LOW);
+    totalTime += pulseIn(echoPin, HIGH);
+  }
+  
+  sensorDuration = totalTime / 10; // see about using threshold value
 
   // Read pulse
-  sensorDuration = pulseIn(echoPin, HIGH);
+  // sensorDuration = pulseIn(echoPin, HIGH);
   distance_cm = (sensorDuration * 0.0343) / 2;
+  Serial.println(distance_cm);
 }
 
 void setAnimationFrequency() {
@@ -84,13 +91,13 @@ void setAnimationFrequency() {
 
   if (!isDrawerOpen) {
     if (distance_cm > 100) {
-      skullMotionFrequency = 1;
+      skullMotionFrequency = 0.5;
       blinkFrequency = 2;
     } else if (distance_cm >= 50) {
-      skullMotionFrequency = 2;
+      skullMotionFrequency = 1;
       blinkFrequency = 4;
     } else if (distance_cm < 50) {
-      skullMotionFrequency = 4;
+      skullMotionFrequency = 2;
       blinkFrequency = 8;
     }
   }
@@ -108,11 +115,13 @@ void playSkullAnimation() {
   */
 
   if (millis() - lastMoveTime > long(1000 / skullMotionFrequency)) {
+    //Serial.println(animationStep);
     if (animationStep == 0) { servoMotorH.write(0); } 
-    else if (animationStep == 1) { servoMotorV.write(120); }
+    else if (animationStep == 1) { servoMotorV.write(0); }
     else if (animationStep == 2) { servoMotorH.write(60); }
-    else if (animationStep == 3) { servoMotorV.write(160); }
+    else if (animationStep == 3) { servoMotorV.write(60); }
 
+    lastMoveTime = millis();
     animationStep++;
     if (animationStep > 3) { animationStep = 0; }
   }
@@ -121,6 +130,7 @@ void playSkullAnimation() {
     if (isLightOn) { digitalWrite(ledPin, HIGH); } 
     else { digitalWrite(ledPin, LOW); }
     isLightOn = !isLightOn; // reverses the truth value
+    lastBlinkTime = millis();
   }
 }
 
@@ -131,19 +141,22 @@ void moveDrawer() {
   someone is still in front of the sensor when the drawer is open. 
   */
 
-  if (!isDrawerOpen) {
-    if (digitalRead(switchPin) == HIGH) {
-      isDrawerOpen = 1;
-      motorSteps = 200;
-    } 
-  } else {
-    if (distance_cm > 30) {
-      isDrawerOpen = 0;
-      motorSteps = -200;
-    } 
-  }
-  
-  drawerMotor.step(motorSteps);
+  // if (!isDrawerOpen) {
+  //   if (digitalRead(switchPin) == HIGH) {
+  //     isDrawerOpen = 1;
+  //     drawerMotor.step(100);
+  //   } 
+  // } else {
+  //   if (distance_cm > 30) {
+  //     isDrawerOpen = 0;
+  //     drawerMotor.step(-100);
+  //   } 
+  // }
+
+  // testing
+  drawerMotor.step(250);
+  delay(500);
+  drawerMotor.step(-250);
+  delay(500);
 }
  
-
