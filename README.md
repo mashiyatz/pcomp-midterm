@@ -1,5 +1,5 @@
 # Skelly the Candy Keeper
-Arduino code and documentation for building a motor operated drawer with an undead keeper.
+Arduino code and documentation for building a motor operated drawer with an undead keeper. Created for PComp 2022 by [ankycheng](https://github.com/ankycheng) and [mashiyatz](https://github.com/mashiyatz).
 
 ## Midterm Submission
 
