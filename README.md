@@ -45,7 +45,7 @@ We use a 12V, 3A power supply for this circuit. The stepper motor runs at 12V, w
 
 We include a circuit diagram below:
 
-![midterm_bb.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/843fc8b9-df70-4f5e-bfc0-2e773f8ce802/midterm_bb.png)
+![midterm_bb](https://user-images.githubusercontent.com/43973044/197674089-9e2f4da2-e8be-4732-b313-383703e621b2.png)
 
 ***Circuit description:** The Arduino Nano’s 3.3V and ground pins are connected to the positive and negative buses of the breadboard respectively. A push button connected to 3.3V on one side connects to and ground and D2 through the other. Below it, a SparkFun Dual Motor Driver’s V_motor receives the input lead of a 12V, 3A power supply. It is connected to a 12V NEMA 17 stepper motor and to the D3-D6 pins of the Arduino. Further down, a 5V LM7805 regulator’s left lead receives the 12V input, and is connected to a capacitor that leads to ground. Its output connects to two servo motors, the logic input of the HC-SR04 ultrasonic sensor, and to the V_in pin of the Arduino. The servo motors are connected to D9 and D10, while the sensor’s echo and trigger leads are connected to D7 and D8, respectively. D11 connects to a pair of LEDs in parallel, which converge at a 100 ohm resistor to ground.*
 
