@@ -1,5 +1,5 @@
 # Skelly the Candy Keeper
-Arduino code for building a motor operated drawer with an undead doorman.
+Arduino code and documentation for building a motor operated drawer with an undead keeper.
 
 ## Midterm Submission
 
@@ -39,10 +39,8 @@ Our first prototype used a small push button, but we wanted to use a larger butt
 We were lucky to receive pair of servo motors that Ben also found in the junk shelf that allowed movement along two axes. We 3D printed a skull that we could place on top of our box. By splitting the cranium and jaw and creating a hollow inside, we could attach the skull and animate it with our code.  
 <p align="center">
 <img src="https://user-images.githubusercontent.com/43973044/197685773-a1712d9e-fa5a-4712-8f04-e1df4f569805.jpg" style="width:45%;"/>
-<img src="https://user-images.githubusercontent.com/43973044/197687392-445fd6a5-3af9-4534-97c3-449fd8e97eee.png" style="width:45%;"/>  
+<img src="https://user-images.githubusercontent.com/43973044/197688201-3b4012f0-fa2a-4d59-8211-e473c83fe73a.jpg" style="width:45%;"/>
 </p>
-
-
 
 *Fig. 4: Left: A pair of FS90 9g servo motors fixed to a plastic frame such that one servo rotates vertically and the other horizontally. The jaw of a 3D printed skull is attached to either side of the frame. Right: A bottom-up view of the carved out cranium of the 3D-printed skull showing two pairs of wires that connect to the red LED in either eye.*
 
@@ -58,13 +56,13 @@ We include a circuit diagram below:
 
 ***Circuit description:** The Arduino Nano’s 3.3V and ground pins are connected to the positive and negative buses of the breadboard respectively. A push button connected to 3.3V on one side connects to and ground and D2 through the other. Below it, a SparkFun Dual Motor Driver’s V_motor receives the input lead of a 12V, 3A power supply. It is connected to a 12V NEMA 17 stepper motor and to the D3-D6 pins of the Arduino. Further down, a 5V LM7805 regulator’s left lead receives the 12V input, and is connected to a capacitor that leads to ground. Its output connects to two servo motors, the logic input of the HC-SR04 ultrasonic sensor, and to the V_in pin of the Arduino. The servo motors are connected to D9 and D10, while the sensor’s echo and trigger leads are connected to D7 and D8, respectively. D11 connects to a pair of LEDs in parallel, which converge at a 100 ohm resistor to ground.*
 
-We divided our code into four sections: (1) `getDistance()`, which uses the ultrasonic distance sensor to calculate the average distance measured over 10 pulses, while also clipping outlier measurements above a threshold value; (2) `chooseSkullAnimation()`, which uses the distance and the state of the drawer (i.e., whether it’s opened or closed) to determine which pattern of movement the skull should take; (3) `playSkullAnimation()`, which moves the servo motors fixed to the skull and flashes its LEDs according to the conditions defined in (2); and (4)  `moveDrawer()`, which opens the drawer if the button is pressed, and closes it if 3 seconds have elapsed since opening. 
+We divided our code into four sections: (1) `getDistance()`, which uses the ultrasonic distance sensor to calculate the average distance measured over 10 pulses, while also clipping outlier measurements above a threshold value; (2) `chooseSkullAnimation()`, which uses the distance and the state of the drawer (i.e., whether it’s opened or closed) to determine which pattern of movement the skull should take; (3) `playSkullAnimation()`, which moves the servo motors fixed to the skull and flashes its LEDs according to the conditions defined in (2); and (4)  `moveDrawer()`, which opens the drawer if the button is pressed, and closes it if 3 seconds have elapsed since opening. These functions are all located in the `trick_or_treat_box` directory of this repository.
 
 ### Problems & Workarounds
 
-- **Our circuit wouldn’t run until we switched to a 3A power supply.** We had assumed that the two servos and stepper would not need more than 2A — part of the reason is that the stepper motor we bought seems to run at 350mA, and we thought that the servos would need less as smaller motors. According to the data sheet, however, the servo motor has a 700mA stall current, which means we need at least 1.4A to run both. The 350mA figure for the stepper might only be while the motor is running, and/or only for one of its two induction loops, which also brings the total current higher.    ****
-- ************************************************Our stepper motor didn’t work for a day************************************************. But the next day it started working again like normal when we ran the same code the next day. We still don’t know why that happened.
-- **********************************Our sensor reads very noisy values**********************************. We realized that the ultrasonic sensor isn’t very good at detecting objects that have uneven surfaces, like clothing, which would result in abnormal or noisy readings. Our original plan was to use the sensor to detect whether someone was still in front of the box while it was open to prevent it from shutting on them, but we decided to separate the drawer’s movement from the sensor values. We also began to clamp values above a cutoff distance and take the average through multiple measurements to mitigate the influence of noise.
+- **Our circuit wouldn’t run until we switched to a 3A power supply.** We had assumed that the two servos and stepper would not need more than 2A — part of the reason is that the stepper motor we bought seems to run at 350mA, and we thought that the servos would need less as smaller motors. According to the data sheet, however, the servo motor has a 700mA stall current, which means we need at least 1.4A to run both. The 350mA figure for the stepper might only be while the motor is running, and/or only for one of its two induction loops, which also brings the total current higher.
+- **Our stepper motor didn’t work for a day.** But the next day it started working again like normal when we ran the same code the next day. We still don’t know why that happened.
+- **Our sensor reads very noisy values**. We realized that the ultrasonic sensor isn’t very good at detecting objects that have uneven surfaces, like clothing, which would result in abnormal or noisy readings. Our original plan was to use the sensor to detect whether someone was still in front of the box while it was open to prevent it from shutting on them, but we decided to separate the drawer’s movement from the sensor values. We also began to clamp values above a cutoff distance and take the average through multiple measurements to mitigate the influence of noise.
 
 ### ********************************************Lessons & Further Work********************************************
 
