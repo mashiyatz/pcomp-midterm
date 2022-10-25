@@ -51,7 +51,8 @@ We were lucky to receive pair of servo motors that Ben also found in the junk sh
 - [FS90 9g Servo motors (x2)](https://www.addicore.com/FS90-Mini-Servo-p/AD113.htm)
 - [NEMA-17 12V stepper motor](https://cdn-shop.adafruit.com/product-files/324/C140-A+datasheet.jpg)
 - [5V regulator LM7805](https://www.utmel.com/components/lm7805-voltage-regulator-datasheet-pinout-circuit?id=1061)
-- [SparkFun Dual Motor Driver](https://www.sparkfun.com/products/14451)
+- [SparkFun dual motor driver](https://www.sparkfun.com/products/14451)
+- [Ultrasonic distance sensor HC-SR04](https://www.electroschematics.com/hc-sr04-datasheet/)
 
 Our circuit contains five main components: (1) the Arduino Nano IoT 33, which provides the logic of the circuit and 3.3V to both buses; (2) a NEMA 17 stepper motor and stepper driver, powered directly by a 12V power supply; (3) a pair of servo FS90 9g motors, powered by 5V through a regulator; (4) an ultrasonic distance sensor, also powered through the regulator; and (5) a pair of LEDs in parallel powered by digital output.
 
