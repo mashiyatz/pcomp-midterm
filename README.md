@@ -28,19 +28,23 @@ Luckily, we found some treasure on the junk shelf — a gear and rod mechanism t
 We bought a small drawer that was longer than our rod-motor system. In order to open and close the drawer, we decided we would extend the door of the drawer vertically (e.g., attach a new face) so that it could be taller than the combined height of the container and the rod-motor system. The rod would thus open and close the drawer by pushing and pulling the section of the face extending past the floor of the container.   
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/43973044/197685291-7bb3848a-8895-49c0-9544-7537278f171e.jpg" style="width:50%;"/>
+<img src="https://user-images.githubusercontent.com/43973044/197685291-7bb3848a-8895-49c0-9544-7537278f171e.jpg" style="width:45%;"/>
+<img src="https://user-images.githubusercontent.com/43973044/197686349-212fb437-3528-4d4b-b159-f29cec0db219.jpg" style="width:45%;"/>
 </p>
 
-*Fig. 3: A cardboard prototype to extend the face on a clear rectangular drawer. The servo motor and rod are held in place underneath the drawer to simulate how the final product should look. [See how the rod moves with the stepper motor here.](https://youtube.com/shorts/Z9YD1cizMOU?feature=share)*  
+*Fig. 3: Left: A cardboard prototype to extend the face on a clear rectangular drawer. The stepper motor and rod are held in place underneath the drawer to simulate how the final product should look. Right: A top-down view of the stepper motor and rod system in what would eventually become the bottom chamber of the box. The stepper is fixed in place using a stand bolted to the bottom of the box. [See how the rod moves with the stepper motor here.](https://youtube.com/shorts/Z9YD1cizMOU?feature=share)*  
 
 Our first prototype used a small push button, but we wanted to use a larger button to scale with the size of the new box. We also anticipated needing space on top of our box for a distance sensor — after all, we wouldn’t be able to place it against the constantly moving face of the drawer. In other words, to fit our rod-motor system, sensor, and button, we needed not only space under our drawer, but also above.  
 
 We were lucky to receive pair of servo motors that Ben also found in the junk shelf that allowed movement along two axes. We 3D printed a skull that we could place on top of our box. By splitting the cranium and jaw and creating a hollow inside, we could attach the skull and animate it with our code.  
 <p align="center">
-<img src="https://user-images.githubusercontent.com/43973044/197685773-a1712d9e-fa5a-4712-8f04-e1df4f569805.jpg" style="width:50%;"/>
+<img src="https://user-images.githubusercontent.com/43973044/197685773-a1712d9e-fa5a-4712-8f04-e1df4f569805.jpg" style="width:45%;"/>
+<img src="https://user-images.githubusercontent.com/43973044/197687392-445fd6a5-3af9-4534-97c3-449fd8e97eee.png" style="width:45%;"/>  
 </p>
 
-*Fig. 4: A pair of FS90 9g servo motors fixed to a plastic frame such that one servo rotates vertically and the other horizontally. The jaw of a 3D printed skull is attached to either side of the frame.*
+
+
+*Fig. 4: Left: A pair of FS90 9g servo motors fixed to a plastic frame such that one servo rotates vertically and the other horizontally. The jaw of a 3D printed skull is attached to either side of the frame. Right: A bottom-up view of the carved out cranium of the 3D-printed skull showing two pairs of wires that connect to the red LED in either eye.*
 
 ### Circuits and Programming
 
