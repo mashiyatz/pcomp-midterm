@@ -46,6 +46,13 @@ We were lucky to receive pair of servo motors that Ben also found in the junk sh
 
 ### Circuits and Programming
 
+**Component List**
+- [Arduino Nano IoT 33](https://docs.arduino.cc/hardware/nano-33-iot)
+- [FS90 9g Servo motors (x2)](https://www.addicore.com/FS90-Mini-Servo-p/AD113.htm)
+- [NEMA-17 12V stepper motor](https://cdn-shop.adafruit.com/product-files/324/C140-A+datasheet.jpg)
+- [5V regulator LM7805](https://www.utmel.com/components/lm7805-voltage-regulator-datasheet-pinout-circuit?id=1061)
+- [SparkFun Dual Motor Driver](https://www.sparkfun.com/products/14451)
+
 Our circuit contains five main components: (1) the Arduino Nano IoT 33, which provides the logic of the circuit and 3.3V to both buses; (2) a NEMA 17 stepper motor and stepper driver, powered directly by a 12V power supply; (3) a pair of servo FS90 9g motors, powered by 5V through a regulator; (4) an ultrasonic distance sensor, also powered through the regulator; and (5) a pair of LEDs in parallel powered by digital output.
 
 We use a 12V, 3A power supply for this circuit. The stepper motor runs at 12V, while the servos need between 4.8 and 6V. We estimate that the three motors alone combined require at least 2.1A. [Each of the SF90 9g servos have a stall current of 700mA at 4.8V](https://www.addicore.com/FS90-Mini-Servo-p/AD113.htm), while our [NEMA 17 stepper motor requires at least 350mA per loop](https://cdn-shop.adafruit.com/product-files/324/C140-A+datasheet.jpg). 
