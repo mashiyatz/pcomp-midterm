@@ -1,4 +1,4 @@
-# pcomp-midterm
+# Skelly the Candy Keeper
 Arduino code for building a motor operated drawer with an undead doorman.
 
 ## Midterm Submission
