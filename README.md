@@ -8,7 +8,7 @@ Arduino code and documentation for building a motor operated drawer with an unde
 Our undead friend Skelly would love to share their candy with you this Halloween! For our midterm project, we built a button and motor-operated drawer with a very active skull attached on top. The skull is controlled using two servo motors, and changes its pattern of motion depending on the distance read by a sensor. When you press the green button in front of the skull, a stepper motor connected to a rod will push the drawer open and reveal a trove of candy, and after three seconds it will close again, ready for the next visitor. 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/43973044/197682943-3b5871b1-37b6-443d-804c-84a7a8dd4790.png" style="width:50%;"/>
+<img src="https://user-images.githubusercontent.com/43973044/197782585-553f9d9d-adff-439f-9ca2-16d56beee385.jpg" style="width:50%;"/>
 </p>
 
 _Fig. 1: A 3D-printed black skull with red LEDs in its eyes is fixed on top of a brown box with an engraved nametag that reads Skelly the Candy Keeper. One skeletal arm reaches around the box and rests on the face of a drawer, while the other is fixed on top, gesturing with two fingers towards a green button. [See a complete interaction with Skelly here.](https://youtube.com/shorts/K7GUgt3sZBg?feature=share)_
