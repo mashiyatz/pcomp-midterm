@@ -1,8 +1,6 @@
 # Skelly the Candy Keeper
 Arduino code and documentation for building a motor operated drawer with an undead keeper. Created for PComp 2022 by [ankycheng](https://github.com/ankycheng) and [mashiyatz](https://github.com/mashiyatz).
 
-## Midterm Submission
-
 ### ************************Introduction************************
 
 Our undead friend Skelly would love to share their candy with you this Halloween! For our midterm project, we built a button and motor-operated drawer with a very active skull attached on top. The skull is controlled using two servo motors, and changes its pattern of motion depending on the distance read by a sensor. When you press the green button in front of the skull, a stepper motor connected to a rod will push the drawer open and reveal a trove of candy, and after three seconds it will close again, ready for the next visitor. 
